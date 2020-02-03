@@ -24,41 +24,79 @@ class MyApp extends StatefulWidget{
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  int _totalScore = 0;
 
   final _questions = const [
     {
       'questionText'  : 'What\'s your favorite color?',
       'answer'        : [
-        'Black',
-        'Red',
-        'Green',
-        'White'
+        {
+          'text' : 'Black',
+          'score' : 10
+        },
+        {
+          'text' : 'Red',
+          'score' : 5
+        },
+        {
+          'text' : 'Green',
+          'score' : 3
+        },
+        {
+          'text' : 'White',
+          'score' : 1
+        }
       ]
     },
     {
       'questionText'    : 'What\'s your favorite animal?',
       'answer'          : [
-        'Rabbit',
-        'Snake',
-        'Elephant',
-        'Lion'
+        {
+          'text' : 'Rabbit',
+          'score' : 10
+        },
+        {
+          'text' : 'Snake',
+          'score' : 15
+        },
+        {
+          'text' : 'Elephant',
+          'score' : 20
+        },
+        {
+          'text' : 'Lion',
+          'score' : 25
+        }
       ]
     },
     {
       'questionText'    : 'Who\'s your favorite instructor?',
       'answer'          : [
-        'Max',
-        'Manu',
-        'Mankz',
+        {
+          'text' : 'Max',
+          'score' : 10
+        },
+        {
+          'text' : 'Manu',
+          'score' : 15
+        },
+        {
+          'text' : 'Mankz',
+          'score' : 20
+        }
       ]
     }
   ];
 
-  void _answerQuestion(){
+  void _answerQuestion(int score){
     //questionIndex = questionIndex + 1;
+
+
     setState(() {
       _questionIndex += 1;
+      _totalScore += score;
     });
+    print("Total score : " + _totalScore.toString());
     if(_questionIndex < _questions.length) {
       print("Question available");
     }
@@ -70,6 +108,7 @@ class _MyAppState extends State<MyApp> {
   void _resetQuestion(){
     setState(() {
       _questionIndex = 0;
+      _totalScore = 0;
     });
   }
 
@@ -88,6 +127,7 @@ class _MyAppState extends State<MyApp> {
             :
             Result(
               resetQuestion: _resetQuestion,
+              totalScore: _totalScore
             )
       )
     );
