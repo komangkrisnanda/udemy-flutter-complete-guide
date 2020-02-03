@@ -23,7 +23,7 @@ class Result extends StatelessWidget{
                     style: TextStyle(fontSize: 20)
                 ),
                 RaisedButton(
-                  child: Text('Reset cuy'),
+                  child: Text('Start Again'),
                   onPressed: resetQuestion,
                 )
               ]
