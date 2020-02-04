@@ -10,6 +10,22 @@ class Result extends StatelessWidget{
     @required this.totalScore
   });
 
+  String get resultPhrase{
+    var result = "";
+
+    if(totalScore > 50){
+      result = "You are good!";
+    }
+    else if(totalScore > 35){
+      result = "Yup, aweomse!";
+    }
+    else{
+      result = "Yihaa.. you noob :P";
+    }
+
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,7 +37,7 @@ class Result extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                    'You did it!',
+                    resultPhrase,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.green[800]
